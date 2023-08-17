@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo List</title>
+</head>
+<body>
+    <h1>Todo List</h1>
+    <table>
+        <tr th:each="task: ${tasks}">
+            <td th:text="${task.name}"></td>
+            <td th:text="${task.description}"></td>
+            <td th:if="${task.completed}">Completed</td>
+            <td th:if="${!task.completed}">Not Completed</td>
+        </tr>
+    </table>
+</body>
+</html>
