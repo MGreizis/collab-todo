@@ -56,6 +56,13 @@ public class TaskController {
     }
 
     @GetMapping("/task/delete/{id}")
+    public String showDeleteTaskForm(@PathVariable Long id, Model model) {
+        Task task = taskRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid task Id:" + id));
+        model.addAttribute("task", task);
+        return "task/delete";
+    }
+
+    @PostMapping("/task/delete/{id}")
     public String deleteTask(@PathVariable Long id) {
         Task task = taskRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid task Id:" + id));
         taskRepository.delete(task);

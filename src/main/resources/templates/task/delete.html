@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Delete Task</title>
+</head>
+<body>
+    <h1>Delete Task</h1>
+    <p>Are you sure you want to delete the task?</p>
+
+    <form action="/task/delete/{id}" method="post" th:object="${task}" th:action="@{'/task/delete/' + ${task.id}}">
+        <input type="hidden" th:field="*{id}">
+        <button type="submit">Delete</button>
+    </form>
+
+    <a th:href="@{'/'}">Cancel</a>
+</body>
+</html>
