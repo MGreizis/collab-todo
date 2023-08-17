@@ -2,16 +2,19 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <title>Delete Task</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css">
 </head>
-<body>
-    <h1>Delete Task</h1>
+<body class="bg-gray-100">
+<div class="container mx-auto mt-10 p-5 bg-white rounded-lg shadow-md">
+    <h1 class="text-2xl font-semibold mb-4">Delete Task</h1>
     <p>Are you sure you want to delete the task?</p>
 
     <form action="/task/delete/{id}" method="post" th:object="${task}" th:action="@{'/task/delete/' + ${task.id}}">
         <input type="hidden" th:field="*{id}">
-        <button type="submit">Delete</button>
+        <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded font-semibold hover:bg-red-600">Delete</button>
     </form>
 
-    <a th:href="@{'/'}">Cancel</a>
+    <a th:href="@{'/'}" class="mt-2 text-blue-500 hover:underline">Cancel</a>
+</div>
 </body>
 </html>

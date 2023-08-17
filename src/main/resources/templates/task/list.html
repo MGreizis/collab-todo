@@ -2,18 +2,34 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <title>Todo List</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css">
 </head>
-<body>
-    <h1>Todo List</h1>
-        <table>
-            <tr th:each="task : ${tasks}">
-                <td th:text="${task.name}" style="font-weight: bold"></td>
-                <td th:text="${task.description}"></td>
-                <td><a th:href="@{'/task/edit/' + ${task.id}}">Edit</a></td>
-                <td><a th:href="@{'/task/delete/' + ${task.id}}">Delete</a></td>
-            </tr>
-        </table>
-    <a href="/task/add">Add Task</a>
+<body class="bg-gray-100">
+<div class="container mx-auto mt-10 p-5 bg-white rounded-lg shadow-md">
+    <h1 class="text-2xl font-semibold mb-4">Todo List</h1>
+    <table class="w-full border">
+        <thead>
+        <tr class="bg-gray-200">
+            <th class="py-2 px-4">Name</th>
+            <th class="py-2 px-4">Description</th>
+            <th class="py-2 px-4">Edit</th>
+            <th class="py-2 px-4">Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="task : ${tasks}" class="border-t">
+            <td class="py-2 px-4" th:text="${task.name}"></td>
+            <td class="py-2 px-4" th:text="${task.description}"></td>
+            <td class="py-2 px-4">
+                <a th:href="@{'/task/edit/' + ${task.id}}" class="text-blue-500 hover:underline">Edit</a>
+            </td>
+            <td class="py-2 px-4">
+                <a th:href="@{'/task/delete/' + ${task.id}}" class="text-red-500 hover:underline">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a href="/task/add" class="mt-4 text-blue-500 hover:underline">Add Task</a>
+</div>
 </body>
 </html>

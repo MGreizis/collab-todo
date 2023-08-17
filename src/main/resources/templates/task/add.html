@@ -3,17 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Add Task</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css">
 </head>
-<body>
-    <h1>Add Task</h1>
+<body class="bg-gray-100">
+<div class="container mx-auto mt-10 p-5 bg-white rounded-lg shadow-md">
+    <h1 class="text-2xl font-semibold mb-4">Add Task</h1>
     <form action="/task/add" method="post" th:object="${task}">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" th:field="*{name}" required><br>
+        <div class="mb-4">
+            <label for="name" class="block font-semibold mb-1">Name:</label>
+            <input type="text" id="name" name="name" th:field="*{name}" class="w-full p-2 border rounded" required>
+        </div>
 
-        <label for="description">Description:</label>
-        <input type="text" id="description" name="description" th:field="*{description}" required><br>
+        <div class="mb-4">
+            <label for="description" class="block font-semibold mb-1">Description:</label>
+            <input type="text" id="description" name="description" th:field="*{description}" class="w-full p-2 border rounded" required>
+        </div>
 
-        <button type="submit">Add Task</button>
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded font-semibold hover:bg-blue-600">Add Task</button>
     </form>
+</div>
 </body>
 </html>
